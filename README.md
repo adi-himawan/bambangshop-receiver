@@ -68,16 +68,16 @@ You can install Postman via this website: https://www.postman.com/downloads/
     -   [V] Commit: `Implement list_all_as_string function in Notification repository.`
     -   [V] Write answers of your learning module's "Reflection Subscriber-1" questions in this README.
 -   **STAGE 3: Implement services and controllers**
-    -   [ ] Commit: `Create Notification service struct skeleton.`
-    -   [ ] Commit: `Implement subscribe function in Notification service.`
-    -   [ ] Commit: `Implement subscribe function in Notification controller.`
-    -   [ ] Commit: `Implement unsubscribe function in Notification service.`
-    -   [ ] Commit: `Implement unsubscribe function in Notification controller.`
-    -   [ ] Commit: `Implement receive_notification function in Notification service.`
-    -   [ ] Commit: `Implement receive function in Notification controller.`
-    -   [ ] Commit: `Implement list_messages function in Notification service.`
-    -   [ ] Commit: `Implement list function in Notification controller.`
-    -   [ ] Write answers of your learning module's "Reflection Subscriber-2" questions in this README.
+    -   [V] Commit: `Create Notification service struct skeleton.`
+    -   [V] Commit: `Implement subscribe function in Notification service.`
+    -   [V] Commit: `Implement subscribe function in Notification controller.`
+    -   [V] Commit: `Implement unsubscribe function in Notification service.`
+    -   [V] Commit: `Implement unsubscribe function in Notification controller.`
+    -   [V] Commit: `Implement receive_notification function in Notification service.`
+    -   [V] Commit: `Implement receive function in Notification controller.`
+    -   [V] Commit: `Implement list_messages function in Notification service.`
+    -   [V] Commit: `Implement list function in Notification controller.`
+    -   [V] Write answers of your learning module's "Reflection Subscriber-2" questions in this README.
 
 ## Your Reflections
 This is the place for you to write reflections:
@@ -92,3 +92,13 @@ Dalam tutorial ini, RwLock digunakan karena memungkinkan beberapa thread untuk m
 Pada Java, static variable dapat dimutasi sehingga memerlukan penanganan khusus untuk menjamin thread-safety dalam konteks multithreading. Sebaliknya, Rust membatasi mutasi static variable untuk memastikan thread-safety serta menghindari terjadinya race condition. Oleh karena itu, static variable dalam Rust harus memiliki lifetime static dan tipe Sync agar aman untuk digunakan oleh banyak thread secara bersamaan. Untuk memfasilitasi hal ini, kita bisa memanfaatkan library lazy_static yang memastikan hanya ada satu instance sepanjang program berjalan. 
 
 #### Reflection Subscriber-2
+#### 1. Have you explored things outside of the steps in the tutorial, for example: src/lib.rs? If not, explain why you did not do so. If yes, explain things that you have learned from those other parts of code.
+Iya. Menurut saya, lib.rs berisi banyak informasi penting yang sangat diperlukan dalam aplikasi. Salah satu contohnya adalah ErrorResponse yang berfungsi untuk mempermudah pengelolaan error dalam aplikasi. Selain itu, lib.rs juga berisi informasi lain seperti root url dan instance name.
+
+#### 2. Since you have completed the tutorial by now and have tried to test your notification system by spawning multiple instances of Receiver, explain how Observer pattern eases you to plug in more subscribers. How about spawning more than one instance of Main app, will it still be easy enough to add to the system?
+Iya. Dengan menerapkan Observer pattern, penambahan Subscriber dapat dilakukan hanya dengan menambahkan Subscriber ke daftar Observer. Observer pattern yang sudah dirancang dengan open-closed principle ini memungkinkan kita untuk menambahkan Subscriber baru tanpa perlu mengubah kode yang sudah ada. 
+
+Ketika terdapat lebih dari satu instance untuk Main App, penambahan Subscriber tetap dapat dilakukan dengan mudah karena tinggal menambahkan Subscriber tersebut ke masing-masing instance dengan API yang sesuai.
+
+#### 3. Have you tried to make your own Tests, or enhance documentation on your Postman collection? If you have tried those features, tell us whether it is useful for your work (it can be your tutorial work or your Group Project).
+Iya. Menurut saya, kedua fitur tersebut sangat berguna. Dengan memanfaatkan kedua fitur tersebut, kita dapat secara otomatis memverifikasi apakah HTTP response yang dikirimkan oleh aplikasi kita sudah benar atau belum. Hal ini tentunya dapat memudahkan kolaborasi dalam pengerjaan Group Project.
